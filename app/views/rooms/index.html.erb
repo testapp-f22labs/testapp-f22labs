@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Listings
+      </div>
+      <div class="panel-body">
+        <% @rooms.each do |room| %>
+            <div class="row">
+              <div class="col-md-2">
+                <%= image_tag "/PostImages/"+room.photo,:size => '225x225' %>
+              </div>
+              <div class="col-md-7">
+                <% if room.isfeatured.eql?"1" %>
+                    <strong>Featured Listing</strong>
+                <% else %>
+                    <strong>Usual Listing</strong>
+                <% end %>
+                <p>Office type: <%= room.office_type %></p>
+                <p>Accomodate: <%= room.accomodate %></p>
+                <p>Seats: <%= room.no_of_seats %></p>
+                <p>Rooms: <%= room.no_of_additional_rooms %></p>
+                <p>Location: <%= room.location %></p>
+                <%= link_to "Reserve", edit_room_path(room), class: "btn btn-primary reservation"%>
+              </div>
+            </div>
+            <hr/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
